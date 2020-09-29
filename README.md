@@ -21,7 +21,7 @@ The approach of this repository is to overwrite specific files and mount them in
    cd ../../../..
    ```
 
-   And here as handy one-liner:
+   And here as copy-paste ready one-liner:
 
    ```
    cd themes/pti-health/login/resources && npm i && npm run build:tailwind && cd ../../../..
