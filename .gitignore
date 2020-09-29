@@ -1,2 +1,5 @@
 themes/pti-health/login/resources/node_modules
 themes/pti-health/login/resources/css/styles.output.css
+
+# ignore jar.deployed, jar.dodeploy, ...
+deployments/*.jar.*
