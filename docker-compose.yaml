@@ -45,6 +45,7 @@ services:
       KEYCLOAK_USER: ${KEYCLOAK_USER:-admin}
       KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD:-password}
       TZ: America/Asuncion
+      KEYCLOAK_IMPORT: /tmp/realm-export.json
     restart: unless-stopped
     command: ["-Dkeycloak.profile.feature.account_api=enabled", "-Dkeycloak.profile.feature.upload_scripts=enabled", "-Dkeycloak.profile.feature.scripts=enabled", "-b", "0.0.0.0"]
     depends_on:
@@ -57,4 +58,4 @@ services:
       - ./deployments:/opt/jboss/keycloak/standalone/deployments
       - ${PWD}/standalone/configuration/standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
       - ${PWD}/standalone/configuration/standalone-ha.xml:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml
-      
+      - ${PWD}/config/realm-export.json:/tmp/realm-export.json
