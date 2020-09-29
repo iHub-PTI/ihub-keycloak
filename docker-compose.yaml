@@ -3,9 +3,6 @@ version: '3.7'
 volumes:
   pti-health-d2b:
 
-networks:
-  pti-health-net:
-
 services:
   db:
     image: postgres:11
@@ -20,13 +17,9 @@ services:
     stdin_open: true
     tty: true
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-keycloak-test}
-      POSTGRES_USER: ${POSTGRES_USER:-keycloak}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-keycloak-password}
+      POSTGRES_USER: postgres
       POSTGRES_DB: ${POSTGRES_DB:-keycloak}
-    networks:
-      pti-health-net:
-        aliases:
-         - db
     ports:
       - 5432:5432
     volumes:
@@ -38,11 +31,11 @@ services:
       DB_VENDOR: POSTGRES
       DB_ADDR: db
       DB_DATABASE: keycloak
-      DB_USER: keycloak
+      DB_USER: postgres
       DB_SCHEMA: public
-      DB_PASSWORD: keycloak-test
-      KEYCLOAK_USER: ${KEYCLOAK_USER:-ptihealth}
-      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD:-test}
+      DB_PASSWORD: keycloak-password
+      KEYCLOAK_USER: ${KEYCLOAK_USER:-admin}
+      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD:-password}
       TZ: America/Asuncion
     restart: unless-stopped
     command: ["-Dkeycloak.profile.feature.account_api=enabled", "-Dkeycloak.profile.feature.upload_scripts=enabled", "-Dkeycloak.profile.feature.scripts=enabled", "-b", "0.0.0.0"]
@@ -52,7 +45,3 @@ services:
       - 8080:8080
     volumes:
       - ./themes/base-CMR:/opt/jboss/keycloak/themes/base-CMR
-    networks:
-      pti-health-net:
-        aliases:
-         - kc
