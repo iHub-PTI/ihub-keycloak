@@ -44,4 +44,4 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./themes/base-CMR:/opt/jboss/keycloak/themes/base-CMR
+      - ./themes/pti-health:/opt/jboss/keycloak/themes/pti-health
