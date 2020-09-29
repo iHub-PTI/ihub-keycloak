@@ -25,6 +25,14 @@ services:
     volumes:
       - pti-health-d2b:/var/lib/postgresql/data
 
+  smtp:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+    logging:
+      driver: none
+
   keycloak:
     image: jboss/keycloak:10.0.0
     environment:
@@ -41,6 +49,7 @@ services:
     command: ["-Dkeycloak.profile.feature.account_api=enabled", "-Dkeycloak.profile.feature.upload_scripts=enabled", "-Dkeycloak.profile.feature.scripts=enabled", "-b", "0.0.0.0"]
     depends_on:
       - db
+      - smtp
     ports:
       - 8080:8080
     volumes:
