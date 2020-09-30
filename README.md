@@ -72,11 +72,17 @@ Some actions require to send emails, so we setup a local mailserver sandbox that
 
 Keycloak is running on [localhost:8080](http://localhost:8080). All Keycloak paths are traditionally prefixed with `/auth`
 
+#### REALM
+
 To open the user login for the `PTI-Health` realm, navigate to: [localhost:8080/auth/realms/PTI-Health/account](http://localhost:8080/auth/realms/PTI-Health/account)
 
-To open the user login for a certain client (in this case `cmr`), you need to provide `client_id` and `response_type` as query parameters:
+#### CLIENT (Defaults to Login)
+
+To open the user login for a certain client (in this case `boldo-patient`), you need to provide `client_id` and `response_type` as query parameters:
 
 [localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/auth?client_id=boldo-patient&response_type=code](http://localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/auth?client_id=boldo-patient&response_type=code)
+
+#### CLIENT REGISTRATION
 
 To create a direct link to the registration, you can construct a link as follows:
 
@@ -89,7 +95,13 @@ http://<domain.com>/auth/realms/<realm-name>/protocol/openid-connect/registratio
 &kc_locale=<two-digit-lang-code>
 ```
 
-Here a link ready to copy: [localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/registrations?client_id=cmr&response_type=code](http://localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/registrations?client_id=boldo-patient&response_type=code)
+Here a link ready to copy: [localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/registrations?client_id=boldo-patient&response_type=code](http://localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/registrations?client_id=boldo-patient&response_type=code)
+
+#### PUBLIC KEY
+
+To get the public keyand other information about the real, access the following URL: [localhost:8080/auth/realms/PTI-Health](http://localhost:8080/auth/realms/PTI-Health)
+
+---
 
 You can find more information about all the available endpoints for openID in the [official docs](https://www.keycloak.org/docs/latest/server_admin/#keycloak-server-oidc-uri-endpoints) and a good step-by-step tutorial about the Authorization Code Flow is available [here](https://www.appsdeveloperblog.com/keycloak-authorization-code-grant-example/).
 
