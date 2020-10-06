@@ -8,7 +8,7 @@
     <#elseif section = "text">
     <div class="hidden xl:block xl:w-500">
         <h1 class="text-5xl font-bold text-cool-gray-700">Bienvenido!</h1>
-        <p class="text-2xl text-gray500">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p class="text-2xl text-gray-500">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
     </div>
         
     <#elseif section = "form">
@@ -60,9 +60,20 @@
                     <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
 
                     <span class="block w-full rounded-md shadow-sm">
-                        <input tabindex="4" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                        <button tabindex="4" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700" name="login" id="kc-login" type="submit">${msg("doLogIn")}</button>
                     </span>
                 </div>
+
+
+                <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+                    <div id="kc-registration" class="block text-sm leading-5 text-center text-gray-500">
+                        <p>
+                            ${msg("noAccount")}
+                            <br/>
+                            <a href="${url.registrationUrl}" class="text-indigo-600">${msg("doRegister")}</a>
+                        </p>
+                    </div>
+                </#if>
 
             </form>
         </#if>
@@ -80,17 +91,6 @@
       
     </div>
 
-
-    <#elseif section = "info" >
-        <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
-            <div id="kc-registration" class="w-full mt-12 text-sm text-center">
-                <p class="text-gray-500">
-                    ${msg("noAccount")}
-                    <br/>
-                    <a tabindex="6" href="${url.registrationUrl}" class="text-indigo-600">${msg("doRegister")}</a>
-                </p>
-            </div>
-        </#if>
     </#if>
 
 </@layout.registrationLayout>

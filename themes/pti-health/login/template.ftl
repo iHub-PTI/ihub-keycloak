@@ -159,8 +159,8 @@
                 </#if>
   
                 <#if displayInfo>
-                <div id="kc-info" class="${properties.kcSignUpClass!}">
-                  <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
+                <div id="kc-info">
+                  <div id="kc-info-wrapper">
                     <#nested "info">
                   </div>
                 </div>
