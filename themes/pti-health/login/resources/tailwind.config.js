@@ -1,13 +1,19 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-const plugin = require('tailwindcss/plugin')
-const TUI = require('@tailwindcss/ui')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  purge: ['../*.ftl'],
+  purge: ["../*.ftl"],
   theme: {
     extend: {
-      fontFamily: { sans: ['Inter var', ...defaultTheme.fontFamily.sans] },
-      colors: {},
+      fontFamily: { sans: ["Inter var", ...defaultTheme.fontFamily.sans] },
+      colors: {
+        primary: "#27BEC2",
+        secondary: "#FFF4E9",
+        accent: "#F08F77",
+      },
+      screens: {
+        xl: "1200px",
+      },
     },
   },
-}
+  plugins: [require("@tailwindcss/ui")],
+};

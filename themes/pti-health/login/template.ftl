@@ -5,6 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <meta name="robots" content="noindex, nofollow">
 
     <#if properties.meta?has_content>
@@ -36,12 +39,12 @@
 
 <body class="antialiased">
   <div>
-    <nav class="bg-white border-b border-gray-300 sm:shadow sm:border-b-0">
+    <nav>
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex items-center flex-shrink-0">
-                        <img class="block w-auto h-8" src="https://tailwindui.com/img/logos/workflow-logo-on-white.svg" alt="Workflow logo">
+                        <img class="block w-auto" style="height: 45px;" src="${url.resourcesPath}/img/iHub.png" alt="Workflow logo">
                     </div>
                 </div>
             </div>
@@ -52,13 +55,13 @@
     </div>  -->
 
 
-    <div class="sm:mx-8 sm:my-4">
+    <div class="px-4 py-12">
 
         <#--  class="${properties.kcFormCardClass!} <#if displayWide>${properties.kcFormCardAccountClass!}</#if>"  -->
-        <div class="px-6 py-10 overflow-hidden bg-white sm:shadow">
+        <div>
         
-        <header class="mb-8">
-            <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
+        <header class="mb-12 text-cool-gray-700">
+            <#--  <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
                 <div id="kc-locale">
                     <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
                         <div class="kc-dropdown" id="kc-locale-dropdown">
@@ -71,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-            </#if>
+            </#if>  -->
 
             <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
                 <#if displayRequiredFields>
@@ -79,18 +82,13 @@
                         <div class="${properties.kcLabelWrapperClass!} subtitle">
                             <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
                         </div>
-                        <div class="col-md-10">
+                        <div>
                             <h1 id="kc-page-title"> <#nested "header"> </h1>
                         </div>
                     </div>
                 <#else>
                 <div class="flex items-center">
-                    <button onclick="history.back()">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    </button>
-                    <h1 id="kc-page-title" class="ml-5 text-3xl font-bold leading-tight">
+                    <h1 id="kc-page-title" class="text-2xl font-semibold leading-tight">
                         <#nested "header">
                     </h1>
                 </div>
