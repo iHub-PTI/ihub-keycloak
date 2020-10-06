@@ -13,6 +13,12 @@ module.exports = {
       screens: {
         xl: "1200px",
       },
+      maxWidth: {
+        "screen-2xl": "1440px",
+      },
+      width: {
+        500: "500px",
+      },
     },
   },
   plugins: [require("@tailwindcss/ui")],

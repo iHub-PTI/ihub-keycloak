@@ -10,7 +10,7 @@
             <div>
                 <label for="email" class="block text-sm font-medium leading-5 text-gray-700">${msg("email")}</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input type="text" id="email" class="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5" name="email" value="${(register.formData.email!'')}" autocomplete="email" />
+                    <input type="text" id="email" class="block w-full form-input sm:text-sm sm:leading-5" name="email" value="${(register.formData.email!'')}" autocomplete="email" />
                 </div>
             </div>
 
@@ -18,7 +18,7 @@
             <div>
                 <label for="username" class="block text-sm font-medium leading-5 text-gray-700">${msg("username")}</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input type="text" id="username" class="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5" name="username" value="${(register.formData.username!'')}" autocomplete="username" />
+                    <input type="text" id="username" class="block w-full form-input sm:text-sm sm:leading-5" name="username" value="${(register.formData.username!'')}" autocomplete="username" />
                 </div>
             </div>
           </#if>
@@ -27,14 +27,14 @@
             <div>
                 <label for="password" class="block text-sm font-medium leading-5 text-gray-700">${msg("password")}</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input type="password" id="password" class="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5" name="password" autocomplete="new-password"/>
+                    <input type="password" id="password" class="block w-full form-input sm:text-sm sm:leading-5" name="password" autocomplete="new-password"/>
                 </div>
             </div>
 
             <div>
                 <label for="password-confirm" class="block text-sm font-medium leading-5 text-gray-700">${msg("passwordConfirm")}</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input type="password" id="password-confirm" class="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5" name="password-confirm" />
+                    <input type="password" id="password-confirm" class="block w-full form-input sm:text-sm sm:leading-5" name="password-confirm" />
                 </div>
             </div>
             </#if>

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 767px) {
+  .below-md\:bg-none {
+    background-image: none !important;
+  }
+}
