@@ -69,18 +69,19 @@
                     </button>
                 </span>
             </div>
-        
-            <#--  <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doRegister")}"/>
-            </div>  -->
 
-            <div class="block text-sm leading-5 text-center text-gray-500">
-                <p>
-                    ¿Ya tienes cuenta?
-                    <br/>
-                    <a href="${url.loginUrl}" class="text-indigo-600">${kcSanitize(msg("backToLogin"))?no_esc}</a>
-                </p>
-            </div>
+
         </form>
+
+
+    <#elseif section = "footer">
+        <div class="block text-sm leading-5 text-center text-gray-500">
+            <p>
+                ¿Ya tienes cuenta?
+                <br/>
+                <a href="${url.loginUrl}" class="text-indigo-600">${kcSanitize(msg("backToLogin"))?no_esc}</a>
+            </p>
+        </div>
+
     </#if>
 </@layout.registrationLayout>

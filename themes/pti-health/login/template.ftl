@@ -41,7 +41,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <div class="flex items-center flex-shrink-0">
-                <img class="block w-auto" style="height: 45px;" src="${url.resourcesPath}/img/iHub.png" alt="Workflow logo">
+                <img class="block w-auto" style="height: 45px;" src="${url.resourcesPath}/img/iHUB.png" alt="iHUB logo">
                 </div>
             </div>
         </div>
