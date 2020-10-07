@@ -34,7 +34,8 @@
   </head>
   
   <body class="antialiased">
-    <div class="min-h-screen bg-right-bottom bg-no-repeat bg-contain md:pb-5 below-md:bg-none" style="background-image: url(${url.resourcesPath}/img/background.svg)">
+    <div class="fixed bottom-0 right-0 w-screen h-screen bg-right-bottom bg-no-repeat bg-contain below-md:bg-none" style="background-image: url(${url.resourcesPath}/img/background.svg)"></div>
+    <div class="relative h-full">
 
       <nav class="px-4 mx-auto max-w-screen-2xl md:px-24 md:pt-8 md:pb-5">
         <div class="flex justify-between h-16">
@@ -47,133 +48,145 @@
       </nav>
 
 
-      <div class="flex flex-col px-4 mx-auto xl:items-center xl:justify-between xl:flex-row max-w-screen-2xl md:px-24">
+      <div class="flex flex-col px-4 mx-auto xl:items-center xl:justify-between xl:flex-row max-w-screen-2xl md:px-24 md:mb-5">
 
         <#nested "text">
 
-        <div class="px-4 py-12 bg-white xl:px-6 xl:flex-shrink-0 md:mx-auto xl:mx-none md:shadow-2xl md:rounded-lg md:w-500 xl:mx-0">
-          <div>
-            <header class="mb-12 text-cool-gray-700">
-              <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-              <div id="kc-locale">
-                <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
-                  <div class="kc-dropdown" id="kc-locale-dropdown">
-                    <a href="#" id="kc-current-locale-link">${locale.current}</a>
-                    <ul>
-                      <#list locale.supported as l>
-                      <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>
-                      </#list>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              </#if>
-              <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
-                  <#if displayRequiredFields>
-                      <div class="${properties.kcContentWrapperClass!}">
-                      <div class="${properties.kcLabelWrapperClass!} subtitle">
-                          <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
-                      </div>
-                      <div>
-                          <h2 id="kc-page-title"  class="text-2xl font-semibold leading-tight"> <#nested "header"> </h2>
-                      </div>
-                      </div>
-                  <#else>
-                      <div class="flex items-center">
-                      <h2 id="kc-page-title" class="text-2xl font-semibold leading-tight">
-                          <#nested "header">
-                      </h2>
-                      </div>
-                  </#if>
-              <#else>
-                  <#if displayRequiredFields>
-                      <div class="${properties.kcContentWrapperClass!}">
-                      <div class="${properties.kcLabelWrapperClass!} subtitle">
-                          <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
-                      </div>
-                      <div class="col-md-10">
-                          <#nested "show-username">
-                          <div class="${properties.kcFormGroupClass!}">
-                          <div id="kc-username">
-                              <label id="kc-attempted-username">${auth.attemptedUsername}</label>
-                              <a id="reset-login" href="${url.loginRestartFlowUrl}">
-                              <div class="kc-login-tooltip">
-                                  <i class="${properties.kcResetFlowIcon!}"></i>
-                                  <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
-                              </div>
-                              </a>
-                          </div>
-                          </div>
-                      </div>
-                      </div>
-                  <#else>
-                      <#nested "show-username">
-                      <div class="${properties.kcFormGroupClass!}">
-                      <div id="kc-username">
-                          <label id="kc-attempted-username">${auth.attemptedUsername}</label>
-                          <a id="reset-login" href="${url.loginRestartFlowUrl}">
-                          <div class="kc-login-tooltip">
-                              <i class="${properties.kcResetFlowIcon!}"></i>
-                              <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
-                          </div>
-                          </a>
-                      </div>
-                      </div>
-                  </#if>
-              </#if>
-            </header>
-            
-            <div id="kc-content">
-              <div id="kc-content-wrapper">
-  
-                <#-- App-initiated actions should not see warning messages about the need to complete the action -->
-                <#--  during login.                                                                               -->
-                <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>
-                  <div class="mb-6 text-sm">
-                      <#if message.type = 'success'>
-                      <span class="text-green-600">${kcSanitize(message.summary)?no_esc}</span>
-                      <#elseif message.type = 'warning'>
-                      <span class="text-yellow-600">${kcSanitize(message.summary)?no_esc}</span>
-                      <#elseif message.type = 'error'>
-                      <span class="text-red-600">${kcSanitize(message.summary)?no_esc}</span>
-                      <#elseif message.type = 'info'>
-                      <span class="text-blue-600">${kcSanitize(message.summary)?no_esc}</span>
-                      <#else>
-                      <span class="text-cool-gray-700">${kcSanitize(message.summary)?no_esc}</span>
-                      </#if>
-                      
-                  </div>
-                </#if>
-  
-                <#nested "form">
-  
-                <#if auth?has_content && auth.showTryAnotherWayLink() && showAnotherWayIfPresent>
-                  <form id="kc-select-try-another-way-form" action="${url.loginAction}" method="post" <#if displayWide>class="${properties.kcContentWrapperClass!}"</#if>>
-                    <div <#if displayWide>class="${properties.kcFormSocialAccountContentClass!} ${properties.kcFormSocialAccountClass!}"</#if>>
-                        <div class="${properties.kcFormGroupClass!}">
-                            <input type="hidden" name="tryAnotherWay" value="on" />
-                            <a href="#" id="try-another-way" onclick="document.forms['kc-select-try-another-way-form'].submit();return false;">${msg("doTryAnotherWay")}</a>
-                        </div>
+        <div id="card" class="flex flex-col justify-between px-4 py-12 bg-white xl:px-6 xl:flex-shrink-0 md:mx-auto xl:mx-none md:shadow-2xl md:rounded-lg md:w-500 xl:mx-0 below-md:min-h-without-nav">
+            <div>
+                <header class="mb-12 text-cool-gray-700">
+                <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
+                <div id="kc-locale">
+                    <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
+                    <div class="kc-dropdown" id="kc-locale-dropdown">
+                        <a href="#" id="kc-current-locale-link">${locale.current}</a>
+                        <ul>
+                        <#list locale.supported as l>
+                        <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>
+                        </#list>
+                        </ul>
                     </div>
-                  </form>
-                </#if>
-  
-                <#if displayInfo>
-                <div id="kc-info">
-                  <div id="kc-info-wrapper">
-                    <#nested "info">
-                  </div>
+                    </div>
                 </div>
                 </#if>
-  
-              </div>
+                <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
+                    <#if displayRequiredFields>
+                        <div class="${properties.kcContentWrapperClass!}">
+                        <div class="${properties.kcLabelWrapperClass!} subtitle">
+                            <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
+                        </div>
+                        <div>
+                            <h2 id="kc-page-title"  class="text-2xl font-semibold leading-tight"> <#nested "header"> </h2>
+                        </div>
+                        </div>
+                    <#else>
+                        <div class="flex items-center">
+                        <h2 id="kc-page-title" class="text-2xl font-semibold leading-tight">
+                            <#nested "header">
+                        </h2>
+                        </div>
+                    </#if>
+                <#else>
+                    <#if displayRequiredFields>
+                        <div class="${properties.kcContentWrapperClass!}">
+                        <div class="${properties.kcLabelWrapperClass!} subtitle">
+                            <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
+                        </div>
+                        <div class="col-md-10">
+                            <#nested "show-username">
+                            <div class="${properties.kcFormGroupClass!}">
+                            <div id="kc-username">
+                                <label id="kc-attempted-username">${auth.attemptedUsername}</label>
+                                <a id="reset-login" href="${url.loginRestartFlowUrl}">
+                                <div class="kc-login-tooltip">
+                                    <i class="${properties.kcResetFlowIcon!}"></i>
+                                    <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                                </div>
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    <#else>
+                        <#nested "show-username">
+                        <div class="${properties.kcFormGroupClass!}">
+                        <div id="kc-username">
+                            <label id="kc-attempted-username">${auth.attemptedUsername}</label>
+                            <a id="reset-login" href="${url.loginRestartFlowUrl}">
+                            <div class="kc-login-tooltip">
+                                <i class="${properties.kcResetFlowIcon!}"></i>
+                                <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                            </div>
+                            </a>
+                        </div>
+                        </div>
+                    </#if>
+                </#if>
+                </header>
+                
+                <div id="kc-content">
+                <div id="kc-content-wrapper">
+    
+                    <#-- App-initiated actions should not see warning messages about the need to complete the action -->
+                    <#--  during login.                                                                               -->
+                    <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>
+                    <div class="mb-6 text-sm">
+                        <#if message.type = 'success'>
+                        <span class="text-green-600">${kcSanitize(message.summary)?no_esc}</span>
+                        <#elseif message.type = 'warning'>
+                        <span class="text-yellow-600">${kcSanitize(message.summary)?no_esc}</span>
+                        <#elseif message.type = 'error'>
+                        <span class="text-red-600">${kcSanitize(message.summary)?no_esc}</span>
+                        <#elseif message.type = 'info'>
+                        <span class="text-blue-600">${kcSanitize(message.summary)?no_esc}</span>
+                        <#else>
+                        <span class="text-cool-gray-700">${kcSanitize(message.summary)?no_esc}</span>
+                        </#if>
+                        
+                    </div>
+                    </#if>
+    
+                    <#nested "form">
+    
+                    <#if auth?has_content && auth.showTryAnotherWayLink() && showAnotherWayIfPresent>
+                    <form id="kc-select-try-another-way-form" action="${url.loginAction}" method="post" <#if displayWide>class="${properties.kcContentWrapperClass!}"</#if>>
+                        <div <#if displayWide>class="${properties.kcFormSocialAccountContentClass!} ${properties.kcFormSocialAccountClass!}"</#if>>
+                            <div class="${properties.kcFormGroupClass!}">
+                                <input type="hidden" name="tryAnotherWay" value="on" />
+                                <a href="#" id="try-another-way" onclick="document.forms['kc-select-try-another-way-form'].submit();return false;">${msg("doTryAnotherWay")}</a>
+                            </div>
+                        </div>
+                    </form>
+                    </#if>
+
+                    <#if displayInfo>
+                    <div id="kc-info">
+                    <div id="kc-info-wrapper">
+                        <#nested "info">
+                    </div>
+                    </div>
+                    </#if>
+    
+                </div>
+                </div>
             </div>
+
+            <#nested "footer">
             
           </div>
-        </div>
       </div>
       
     </div>
+    <#--  Script to get the footer of the card into viewport on iphones  -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        if (window.innerWidth < 768){
+        var height = window.innerHeight - 64;
+        document.getElementById("card").style["min-height"] = height+"px";
+        }
+    })
+    
+    </script>
   </body>
 </html>
 </#macro>

@@ -7,3 +7,10 @@
     background-image: none !important;
   }
 }
+
+@media (max-width: 767px) {
+  /* 64 for navigation */
+  .below-md\:min-h-without-nav {
+    min-height: calc(100vh - 64px);
+  }
+}
