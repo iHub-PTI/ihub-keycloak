@@ -1,6 +1,6 @@
-# PTI Keycloak
+# iHub Keycloak
 
-Keycloak is used as SSO system for the PTI Health Ecosystem.
+Keycloak is used as SSO system for the iHub Health Ecosystem.
 
 This repository contains the modifications on Keycloak.
 

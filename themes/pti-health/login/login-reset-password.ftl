@@ -40,7 +40,7 @@
 
         </form>
 
-    <#elseif section = "footer-right">
+    <#elseif section = "card-right">
         <div class="hidden ml-4 xl:block">
             <img class="block w-auto" src="${url.resourcesPath}/img/placeholder.svg" alt="placeholder">
         </div>
