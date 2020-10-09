@@ -145,4 +145,4 @@ The project is currently under heavy development but contributors are welcome. F
 
 ## License
 
-[Apache License 2.0](LICENSE)
+[GNU AFFERO GENERAL PUBLIC LICENSE Version 3](LICENSE)
