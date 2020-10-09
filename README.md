@@ -46,7 +46,7 @@ The approach of this repository is to overwrite specific files and mount them in
 
 The server comes with the following default configuration:
 
-      "realm": "PTI-Health",
+      "realm": "iHub",
       "auth-server-url": "http://localhost:8080/auth/",
       "ssl-required": "external",
 
@@ -74,13 +74,13 @@ Keycloak is running on [localhost:8080](http://localhost:8080). All Keycloak pat
 
 #### REALM
 
-To open the user login for the `PTI-Health` realm, navigate to: [localhost:8080/auth/realms/PTI-Health/account](http://localhost:8080/auth/realms/PTI-Health/account)
+To open the user login for the `iHub` realm, navigate to: [localhost:8080/auth/realms/iHub/account](http://localhost:8080/auth/realms/iHub/account)
 
 #### CLIENT (Defaults to Login)
 
 To open the user login for a certain client (in this case `boldo-patient`), you need to provide `client_id` and `response_type` as query parameters:
 
-[localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/auth?client_id=boldo-patient&response_type=code](http://localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/auth?client_id=boldo-patient&response_type=code)
+[localhost:8080/auth/realms/iHub/protocol/openid-connect/auth?client_id=boldo-patient&response_type=code](http://localhost:8080/auth/realms/iHub/protocol/openid-connect/auth?client_id=boldo-patient&response_type=code)
 
 #### CLIENT REGISTRATION
 
@@ -95,11 +95,11 @@ http://<domain.com>/auth/realms/<realm-name>/protocol/openid-connect/registratio
 &kc_locale=<two-digit-lang-code>
 ```
 
-Here a link ready to copy: [localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/registrations?client_id=boldo-patient&response_type=code](http://localhost:8080/auth/realms/PTI-Health/protocol/openid-connect/registrations?client_id=boldo-patient&response_type=code)
+Here a link ready to copy: [localhost:8080/auth/realms/iHub/protocol/openid-connect/registrations?client_id=boldo-patient&response_type=code](http://localhost:8080/auth/realms/iHub/protocol/openid-connect/registrations?client_id=boldo-patient&response_type=code)
 
 #### PUBLIC KEY
 
-To get the public keyand other information about the real, access the following URL: [localhost:8080/auth/realms/PTI-Health](http://localhost:8080/auth/realms/PTI-Health)
+To get the public keyand other information about the real, access the following URL: [localhost:8080/auth/realms/iHub](http://localhost:8080/auth/realms/iHub)
 
 ---
 
