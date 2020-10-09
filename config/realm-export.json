@@ -1,8 +1,8 @@
 {
   "id": "PTI-Health",
-  "realm": "PTI-Health",
-  "displayName": "PTI Health",
-  "displayNameHtml": "PTI Health",
+  "realm": "iHub",
+  "displayName": "iHub",
+  "displayNameHtml": "iHub",
   "notBefore": 1601422129,
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
@@ -27,10 +27,10 @@
   "registrationAllowed": true,
   "registrationEmailAsUsername": false,
   "rememberMe": false,
-  "verifyEmail": false,
+  "verifyEmail": true,
   "loginWithEmailAllowed": true,
   "duplicateEmailsAllowed": false,
-  "resetPasswordAllowed": false,
+  "resetPasswordAllowed": true,
   "editUsernameAllowed": false,
   "bruteForceProtected": false,
   "permanentLockout": false,
@@ -476,7 +476,7 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/PTI-Health/account/",
+      "baseUrl": "/realms/iHub/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
@@ -487,7 +487,7 @@
         "view-profile"
       ],
       "redirectUris": [
-        "/realms/PTI-Health/account/*"
+        "/realms/iHub/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -653,7 +653,7 @@
         "saml.onetimeuse.condition": "false"
       },
       "authenticationFlowBindingOverrides": {
-        "browser": "df14b0ba-56cd-4e07-b209-4333962a1dc8"
+        "browser": "c964734d-7fa3-40a9-9192-d776f3c9968e"
       },
       "fullScopeAllowed": true,
       "nodeReRegistrationTimeout": -1,
@@ -712,7 +712,7 @@
         "saml.onetimeuse.condition": "false"
       },
       "authenticationFlowBindingOverrides": {
-        "browser": "cbcbc473-0846-40ac-8a4c-e5e615bba3f8"
+        "browser": "dc0ce3b2-c22f-4e7e-88dc-68e8e5bc9729"
       },
       "fullScopeAllowed": true,
       "nodeReRegistrationTimeout": -1,
@@ -813,14 +813,14 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/PTI-Health/console/",
+      "baseUrl": "/admin/iHub/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
       "redirectUris": [
-        "/admin/PTI-Health/console/*"
+        "/admin/iHub/console/*"
       ],
       "webOrigins": [
         "+"
@@ -874,76 +874,6 @@
     }
   ],
   "clientScopes": [
-    {
-      "id": "ebf17974-a9db-412a-af05-f326b0be683f",
-      "name": "web-origins",
-      "description": "OpenID Connect scope for add allowed web origins to the access token",
-      "protocol": "openid-connect",
-      "attributes": {
-        "include.in.token.scope": "false",
-        "display.on.consent.screen": "false",
-        "consent.screen.text": ""
-      },
-      "protocolMappers": [
-        {
-          "id": "18161c91-bb2f-479e-b095-3b39df601971",
-          "name": "allowed web origins",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-allowed-origins-mapper",
-          "consentRequired": false,
-          "config": {}
-        }
-      ]
-    },
-    {
-      "id": "8ba52af2-b25b-4491-b2c0-fddbecae62d1",
-      "name": "roles",
-      "description": "OpenID Connect scope for add user roles to the access token",
-      "protocol": "openid-connect",
-      "attributes": {
-        "include.in.token.scope": "false",
-        "display.on.consent.screen": "true",
-        "consent.screen.text": "${rolesScopeConsentText}"
-      },
-      "protocolMappers": [
-        {
-          "id": "9e6aaa4e-3054-4616-be6c-5516d0fde053",
-          "name": "realm roles",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-usermodel-realm-role-mapper",
-          "consentRequired": false,
-          "config": {
-            "user.attribute": "foo",
-            "access.token.claim": "true",
-            "claim.name": "realm_access.roles",
-            "jsonType.label": "String",
-            "multivalued": "true"
-          }
-        },
-        {
-          "id": "6a8e7040-3ff3-4964-93b8-f0dd5ee71b90",
-          "name": "client roles",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-usermodel-client-role-mapper",
-          "consentRequired": false,
-          "config": {
-            "user.attribute": "foo",
-            "access.token.claim": "true",
-            "claim.name": "resource_access.${client_id}.roles",
-            "jsonType.label": "String",
-            "multivalued": "true"
-          }
-        },
-        {
-          "id": "95b04b9f-3589-46b8-a077-7aaf09571187",
-          "name": "audience resolve",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-audience-resolve-mapper",
-          "consentRequired": false,
-          "config": {}
-        }
-      ]
-    },
     {
       "id": "262b8233-d834-4662-9d06-6e1db5aef201",
       "name": "phone",
@@ -1357,6 +1287,76 @@
           }
         }
       ]
+    },
+    {
+      "id": "ebf17974-a9db-412a-af05-f326b0be683f",
+      "name": "web-origins",
+      "description": "OpenID Connect scope for add allowed web origins to the access token",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "false",
+        "consent.screen.text": ""
+      },
+      "protocolMappers": [
+        {
+          "id": "18161c91-bb2f-479e-b095-3b39df601971",
+          "name": "allowed web origins",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-allowed-origins-mapper",
+          "consentRequired": false,
+          "config": {}
+        }
+      ]
+    },
+    {
+      "id": "8ba52af2-b25b-4491-b2c0-fddbecae62d1",
+      "name": "roles",
+      "description": "OpenID Connect scope for add user roles to the access token",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "true",
+        "consent.screen.text": "${rolesScopeConsentText}"
+      },
+      "protocolMappers": [
+        {
+          "id": "9e6aaa4e-3054-4616-be6c-5516d0fde053",
+          "name": "realm roles",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "foo",
+            "access.token.claim": "true",
+            "claim.name": "realm_access.roles",
+            "jsonType.label": "String",
+            "multivalued": "true"
+          }
+        },
+        {
+          "id": "6a8e7040-3ff3-4964-93b8-f0dd5ee71b90",
+          "name": "client roles",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-client-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "foo",
+            "access.token.claim": "true",
+            "claim.name": "resource_access.${client_id}.roles",
+            "jsonType.label": "String",
+            "multivalued": "true"
+          }
+        },
+        {
+          "id": "95b04b9f-3589-46b8-a077-7aaf09571187",
+          "name": "audience resolve",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-resolve-mapper",
+          "consentRequired": false,
+          "config": {}
+        }
+      ]
     }
   ],
   "defaultDefaultClientScopes": [
@@ -1414,14 +1414,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-address-mapper",
-            "saml-user-attribute-mapper",
-            "saml-user-property-mapper",
             "saml-role-list-mapper",
-            "oidc-full-name-mapper",
             "oidc-sha256-pairwise-sub-mapper",
+            "saml-user-attribute-mapper",
+            "oidc-full-name-mapper",
+            "saml-user-property-mapper",
             "oidc-usermodel-property-mapper",
-            "oidc-usermodel-attribute-mapper"
+            "oidc-usermodel-attribute-mapper",
+            "oidc-address-mapper"
           ]
         }
       },
@@ -1492,14 +1492,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "oidc-sha256-pairwise-sub-mapper",
+            "oidc-full-name-mapper",
+            "saml-user-attribute-mapper",
             "oidc-address-mapper",
+            "saml-role-list-mapper",
             "oidc-usermodel-attribute-mapper",
             "oidc-usermodel-property-mapper",
-            "saml-role-list-mapper",
-            "saml-user-property-mapper",
-            "oidc-full-name-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
-            "saml-user-attribute-mapper"
+            "saml-user-property-mapper"
           ]
         }
       }
@@ -1547,7 +1547,7 @@
   "supportedLocales": [],
   "authenticationFlows": [
     {
-      "id": "29dbfddf-8ad9-4151-8380-432cdcda0cca",
+      "id": "49d6cca0-827b-434b-a933-480d8ae928ec",
       "alias": "Account verification options",
       "description": "Method with which to verity the existing account",
       "providerId": "basic-flow",
@@ -1571,7 +1571,7 @@
       ]
     },
     {
-      "id": "38a39e29-77bf-427d-961a-78b12e813a41",
+      "id": "97ccce95-b99e-419c-a4c7-e26799617503",
       "alias": "Authentication Options",
       "description": "Authentication options.",
       "providerId": "basic-flow",
@@ -1602,7 +1602,7 @@
       ]
     },
     {
-      "id": "29ece0d1-8a86-43d8-9145-189d6dc30d45",
+      "id": "7cd2d98b-69f8-4482-bdd4-441ccfaebc15",
       "alias": "Browser - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1626,7 +1626,7 @@
       ]
     },
     {
-      "id": "bb799471-7dac-4fff-a7ed-ea425549ea5d",
+      "id": "895d01e3-8e85-4616-990b-7bc011c74b1c",
       "alias": "Direct Grant - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1650,7 +1650,7 @@
       ]
     },
     {
-      "id": "764f7218-e857-4470-8325-bb7b1503add9",
+      "id": "0f470f98-3c14-4796-a859-65ea8473d909",
       "alias": "First broker login - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1674,7 +1674,7 @@
       ]
     },
     {
-      "id": "2906e38d-abbf-43e0-b294-62737eecfe02",
+      "id": "753dfe84-2835-43a6-b445-0eceef3e0ba8",
       "alias": "Handle Existing Account",
       "description": "Handle what to do if there is existing account with same email/username like authenticated identity provider",
       "providerId": "basic-flow",
@@ -1698,7 +1698,7 @@
       ]
     },
     {
-      "id": "df14b0ba-56cd-4e07-b209-4333962a1dc8",
+      "id": "c964734d-7fa3-40a9-9192-d776f3c9968e",
       "alias": "PTI Browser Doctor",
       "description": "browser based authentication",
       "providerId": "basic-flow",
@@ -1743,7 +1743,7 @@
       ]
     },
     {
-      "id": "a23e8342-33d1-42b8-acdb-1f02572accc6",
+      "id": "0330cb6e-4a1e-49db-8e08-987cdf164161",
       "alias": "PTI Browser Doctor Browser - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1767,7 +1767,7 @@
       ]
     },
     {
-      "id": "51d81d26-0c6a-4ff0-aa07-6320d6b06764",
+      "id": "a798542a-af83-4577-8b62-d0c6c8d628a0",
       "alias": "PTI Browser Doctor forms",
       "description": "Username, password, otp and other auth forms.",
       "providerId": "basic-flow",
@@ -1791,7 +1791,7 @@
       ]
     },
     {
-      "id": "cbcbc473-0846-40ac-8a4c-e5e615bba3f8",
+      "id": "dc0ce3b2-c22f-4e7e-88dc-68e8e5bc9729",
       "alias": "PTI Browser Patient",
       "description": "browser based authentication",
       "providerId": "basic-flow",
@@ -1844,7 +1844,7 @@
       ]
     },
     {
-      "id": "e3b3e61f-e94d-402a-9e11-c476666878cb",
+      "id": "780c395a-5d35-484a-9056-716c002828fd",
       "alias": "PTI Browser Patient PTI Browser Doctor Browser - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1868,7 +1868,7 @@
       ]
     },
     {
-      "id": "81704a37-0940-4da9-a631-34dcefcde3ce",
+      "id": "0c187274-1390-401f-839e-df4f0c8b2d94",
       "alias": "PTI Browser Patient PTI Browser Doctor forms",
       "description": "Username, password, otp and other auth forms.",
       "providerId": "basic-flow",
@@ -1892,7 +1892,7 @@
       ]
     },
     {
-      "id": "eed87d9f-78a3-4633-9385-f81487fa6fa8",
+      "id": "9b3902dd-9f31-49bd-b219-891a99fdb7fe",
       "alias": "PTI Registration",
       "description": "registration flow",
       "providerId": "basic-flow",
@@ -1917,7 +1917,7 @@
       ]
     },
     {
-      "id": "12994f26-876d-40ec-850a-5301e178c399",
+      "id": "ad4639b3-eb90-41e1-8844-f79e456314a1",
       "alias": "PTI Registration registration form",
       "description": "registration form",
       "providerId": "form-flow",
@@ -1962,7 +1962,7 @@
       ]
     },
     {
-      "id": "37d67153-4815-4814-929a-3b40ab9cb3b4",
+      "id": "86240504-64a1-4732-8677-4e68d0269944",
       "alias": "Reset - Conditional OTP",
       "description": "Flow to determine if the OTP should be reset or not. Set to REQUIRED to force.",
       "providerId": "basic-flow",
@@ -1986,7 +1986,7 @@
       ]
     },
     {
-      "id": "3e16717d-e659-4419-b562-8d8f9fc58d2c",
+      "id": "ddb564f5-73ed-4964-adb8-89463ead7559",
       "alias": "User creation or linking",
       "description": "Flow for the existing/non-existing user alternatives",
       "providerId": "basic-flow",
@@ -2011,7 +2011,7 @@
       ]
     },
     {
-      "id": "87eeaaf1-c2de-4d64-a1f6-de7795787a71",
+      "id": "dfa7a21e-6a25-44ee-a9b2-f25016c2e137",
       "alias": "Verify Existing Account by Re-authentication",
       "description": "Reauthentication of existing account",
       "providerId": "basic-flow",
@@ -2035,7 +2035,7 @@
       ]
     },
     {
-      "id": "87c90990-5b17-4b70-9a3d-a1a3ce506ad3",
+      "id": "0ac6fb04-3ca4-4e81-92f2-21e0de282528",
       "alias": "browser",
       "description": "browser based authentication",
       "providerId": "basic-flow",
@@ -2073,7 +2073,7 @@
       ]
     },
     {
-      "id": "f33812e5-d890-4d75-9be2-a915e9d917dc",
+      "id": "372b945a-2ff2-45e3-a9bc-412cd9fcd132",
       "alias": "clients",
       "description": "Base authentication for clients",
       "providerId": "client-flow",
@@ -2111,7 +2111,7 @@
       ]
     },
     {
-      "id": "143e21d1-b4b5-4885-9687-f96f14a23e5e",
+      "id": "4f16c5d8-9d03-444e-b8bc-5b54b286850d",
       "alias": "direct grant",
       "description": "OpenID Connect Resource Owner Grant",
       "providerId": "basic-flow",
@@ -2142,7 +2142,7 @@
       ]
     },
     {
-      "id": "6e7837a4-abb0-415c-8f88-868f48d4c4b8",
+      "id": "1c522be2-44f9-4fd3-9c76-4c5a413b8f55",
       "alias": "docker auth",
       "description": "Used by Docker clients to authenticate against the IDP",
       "providerId": "basic-flow",
@@ -2159,7 +2159,7 @@
       ]
     },
     {
-      "id": "bf4fb1b8-5302-47ac-be50-0c5de2c453c2",
+      "id": "3d79c737-7959-4e36-b192-9a19f1db000a",
       "alias": "first broker login",
       "description": "Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account",
       "providerId": "basic-flow",
@@ -2184,7 +2184,7 @@
       ]
     },
     {
-      "id": "15183373-519b-4679-9ae4-ed4939516542",
+      "id": "80401a93-7249-493c-b505-99a2d9888ed0",
       "alias": "forms",
       "description": "Username, password, otp and other auth forms.",
       "providerId": "basic-flow",
@@ -2208,7 +2208,7 @@
       ]
     },
     {
-      "id": "555ece15-f7b9-4968-86c6-ca997e551b32",
+      "id": "d3776b3a-0246-46c8-a27d-68eff5e9d655",
       "alias": "http challenge",
       "description": "An authentication flow based on challenge-response HTTP Authentication Schemes",
       "providerId": "basic-flow",
@@ -2232,7 +2232,7 @@
       ]
     },
     {
-      "id": "c5a67e0f-a6ee-4488-a05c-1a5486f7d0d7",
+      "id": "03a6dc99-8ed3-4910-999c-283cf49617f4",
       "alias": "registration",
       "description": "registration flow",
       "providerId": "basic-flow",
@@ -2250,7 +2250,7 @@
       ]
     },
     {
-      "id": "6553603d-44b4-47f0-b39a-dd994f5fcdc9",
+      "id": "dc19bb58-ba7b-4885-9312-d16795ac4990",
       "alias": "registration form",
       "description": "registration form",
       "providerId": "form-flow",
@@ -2288,7 +2288,7 @@
       ]
     },
     {
-      "id": "546feb1f-f5c7-4b2d-a215-7af85ac411af",
+      "id": "496cd513-5e5c-479e-8565-2289ca6d956b",
       "alias": "reset credentials",
       "description": "Reset credentials for a user if they forgot their password or something",
       "providerId": "basic-flow",
@@ -2326,7 +2326,7 @@
       ]
     },
     {
-      "id": "b1de9a29-918d-4f46-9572-a6520f90ea62",
+      "id": "093f24df-3e5d-4dcb-b648-d20d85fc05da",
       "alias": "saml ecp",
       "description": "SAML ECP Profile Authentication Flow",
       "providerId": "basic-flow",
@@ -2345,28 +2345,28 @@
   ],
   "authenticatorConfig": [
     {
-      "id": "6bac0e7e-07ff-4576-8895-c1be697cc724",
+      "id": "81f4e541-8dfc-4795-ba56-713cb7769013",
       "alias": "Doctor",
       "config": {
         "condUserRole": "medico"
       }
     },
     {
-      "id": "c142ece6-2c85-40e9-a3e3-31c2941dec99",
+      "id": "b011faa1-5264-420f-b6d0-e378aab9ad83",
       "alias": "Patient",
       "config": {
         "condUserRole": "paciente"
       }
     },
     {
-      "id": "b6369b8a-9263-4b1d-ba02-7b89a9321c07",
+      "id": "c1b8d87c-fded-44aa-8b96-f4c53d8526fc",
       "alias": "create unique user config",
       "config": {
         "require.password.update.after.registration": "false"
       }
     },
     {
-      "id": "617d27b7-3aa0-4c37-a05b-7f4fc938d38f",
+      "id": "edbf4834-5fa5-4bd3-ace6-14aa4646851e",
       "alias": "review profile config",
       "config": {
         "update.profile.on.first.login": "missing"
