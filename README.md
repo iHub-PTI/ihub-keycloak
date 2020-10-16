@@ -1,4 +1,4 @@
-# iHub Keycloak
+# iHub - Keycloak
 
 Keycloak is used as SSO system for the iHub Health Ecosystem.
 
@@ -137,12 +137,13 @@ NODE_ENV=production npm run build:tailwind
 
 Windows requires you to change the `docker-compose.yaml` file. This is because there is no `pwd` in windows but linking a single file into a docker container requires to set it as absolute path. Fixes are welcome!
 
-## Authors and Contributions
+## Contributing
+
+The project is currently under heavy development but contributors are welcome. For bugs or feature requests or eventual contributions, just open an issue. Contribution guidelines will be available shortly.
+
+## Authors and License
 
 This project was created as part of the iHub COVID-19 project in collaboration between [Penguin Academy](https://penguin.academy) and [PTI (Parque Tecnológico Itaipu Paraguay)](http://pti.org.py).
 
-The project is currently under heavy development but contributors are welcome. For bugs or feature requests or eventual contributions, just open an issue.
-
-## License
-
-[GNU AFFERO GENERAL PUBLIC LICENSE Version 3](LICENSE)
+This project is licensed under
+[AGPL v3](LICENSE)
