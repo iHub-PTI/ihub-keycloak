@@ -14,7 +14,7 @@ The approach of this repository is to overwrite specific files and mount them in
 
 2. **First start.** To start this server for the first time, execute the following three commands:
 
-   ```
+   ```bash
    cd themes/pti-health/login/resources
    npm i
    npm run build:tailwind
@@ -23,7 +23,7 @@ The approach of this repository is to overwrite specific files and mount them in
 
    And here as copy-paste ready one-liner:
 
-   ```
+   ```bash
    cd themes/pti-health/login/resources && npm i && npm run build:tailwind && cd ../../../..
    ```
 
@@ -31,7 +31,7 @@ The approach of this repository is to overwrite specific files and mount them in
 
 3. **Start Server.** To start Keycloak, run:
 
-   ```
+   ```bash
    docker-compose up
    ```
 
@@ -71,6 +71,46 @@ Some actions require to send emails, so we setup a local mailserver sandbox that
 ### Keycloak Endpoints
 
 Keycloak is running on [localhost:8080](http://localhost:8080). All Keycloak paths are traditionally prefixed with `/auth`
+
+------------------
+
+### Keycloak API call for changing user password
+
+Keycloak introduced this feature recently and is in preview mode use with caution. 
+
+This feature is enabled by default in the docker-compose with the parameter `-Dkeycloak.profile.feature.account_api=enabled` (source: https://www.keycloak.org/docs/latest/server_installation/index.html#profiles).
+
+You can use this api with a `POST`  to  `/auth/realms/your-realm/account/credentials/password` with the Http Header `Accept: application/json` to make Keycloak use a service that accepts JSON. 
+
+The **Request-Body** should be like this:
+
+```json
+{
+    "currentPassword": "oldPassword",
+    "newPassword": "newPassword",
+    "confirmation": "newPassword"
+}
+```
+
+A full example with curl would look like this:
+
+```bash
+curl --request POST 'http://localhost:8080/auth/realms/iHub/account/credentials/password' \
+--header 'Accept: application/json' \
+--header "Authorization: Bearer $ACCESS_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "currentPassword": "oldPassword",
+    "newPassword": "newPassword",
+    "confirmation": "newPassword"
+}'
+```
+
+Credit to [David Losert](https://stackoverflow.com/users/2433589/david-losert) for giving a complete explanation on its [Stack Overflow](https://stackoverflow.com/questions/33910615/is-there-an-api-call-for-changing-user-password-on-keycloak) answer.  
+
+-----------------------------------
+
+
 
 #### REALM
 
@@ -113,13 +153,13 @@ The project contains a customized theme that is using tailwindcss.
 
 The theme is located at `themes/pti-health/login` and a node project is located within the themse `resources` folder:
 
-```
+```bash
 cd themes/pti-health/login/resources
 ```
 
 You can run build and watch tasks like this:
 
-```
+```bash
 // watch for changes in the tailwind.css file:
 npm run watch:tailwind
 
@@ -129,7 +169,7 @@ npm run build:tailwind
 
 On setup, the project creates an optimized tailwind version, only containing the classes that are used in the theme. You can run the following command to create such an optimized version:
 
-```
+```bash
 NODE_ENV=production npm run build:tailwind
 ```
 
