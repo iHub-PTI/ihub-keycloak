@@ -31,6 +31,8 @@
         </#list>
     </#if>
 
+    <#nested "header_scripts">
+
   </head>
   
   <body class="antialiased">
@@ -258,6 +260,9 @@
     }
     
     </script>
+
+    <#nested "footer_scripts">
+
   </body>
 </html>
 </#macro>
