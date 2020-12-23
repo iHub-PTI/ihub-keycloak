@@ -7,8 +7,8 @@
 
     <#elseif section = "text">
         <div class="hidden xl:block xl:w-500">
-            <h1 class="text-5xl font-bold text-cool-gray-700">Bienvenido!</h1>
-            <p class="text-2xl text-gray-500">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <h1 class="text-5xl font-bold text-cool-gray-700">¡Bienvenido!</h1>
+            <p class="text-2xl text-gray-500">Entra a Boldo - el ecosistema oficial de salud del Paraguay. Esta es tu puerta para transformar la atención médica.</p>
         </div>
             
     <#elseif section = "form">
@@ -21,9 +21,9 @@
                         <label for="username" class="block text-sm font-medium leading-5"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
                         <div class="relative mt-1 rounded-md shadow-sm">
                             <#if usernameEditDisabled??>
-                                <input tabindex="1" id="username" class="block w-full form-input sm:text-sm sm:leading-5" name="username" value="${(login.username!'')}" type="text" disabled />
+                                <input tabindex="1" id="username" class="block w-full form-input sm:text-sm sm:leading-5" name="username" value="${(login.username!'')}" type="tel" disabled />
                             <#else>
-                                <input tabindex="1" id="username" class="block w-full form-input sm:text-sm sm:leading-5" name="username" value="${(login.username!'')}"  type="text" autofocus autocomplete="off" />
+                                <input tabindex="1" id="username" class="block w-full form-input sm:text-sm sm:leading-5" name="username" value="${(login.username!'')}"  type="tel" autofocus autocomplete="off" />
                             </#if>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <input tabindex="2" id="password" class="block w-full form-input sm:text-sm sm:leading-5" name="password" type="password" autocomplete="off" />
                         </div>
                         <#if realm.resetPasswordAllowed>
-                            <p class="w-full mt-2 text-sm text-right text-indigo-600"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></p>
+                            <p class="w-full mt-2 text-sm text-right text-secondary-500"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></p>
                         </#if>
                     </div>
 
@@ -60,7 +60,7 @@
                         <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
 
                         <span class="block w-full rounded-md shadow-sm">
-                            <button tabindex="4" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700" name="login" id="kc-login" type="submit">${msg("doLogIn")}</button>
+                            <button tabindex="4" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700" name="login" id="kc-login" type="submit">${msg("doLogIn")}</button>
                         </span>
                     </div>
 
@@ -86,7 +86,7 @@
                 <p>
                     ${msg("noAccount")}
                     <br/>
-                    <a href="${url.registrationUrl}" class="text-indigo-600">${msg("doRegister")}</a>
+                    <a href="${url.registrationUrl}" class="font-bold text-secondary-500">${msg("doRegister")}</a>
                 </p>
             </div>
         </#if>

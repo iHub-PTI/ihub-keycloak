@@ -43,7 +43,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <div class="flex items-center flex-shrink-0">
-                <img class="block w-auto" style="height: 45px;" src="${url.resourcesPath}/img/iHub.svg" alt="iHub logo">
+                <img class="block w-auto" style="height: 45px;" src="${url.resourcesPath}/img/boldo.svg" alt="Boldo logo">
                 </div>
             </div>
         </div>

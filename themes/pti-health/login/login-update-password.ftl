@@ -38,7 +38,7 @@
                     <button class="${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonLargeClass!}" type="submit" name="cancel-aia" value="true" />${msg("doCancel")}</button>
                     <#else>
                     <span class="block w-full rounded-md shadow-sm">
-                        <button class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700" type="submit">
+                        <button class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700" type="submit">
                         ${msg("doSubmit")}
                         </button>
                     </span>
@@ -50,7 +50,7 @@
 
     <#elseif section = "card-right">
         <div class="hidden ml-4 xl:block">
-            <img class="block w-auto" src="${url.resourcesPath}/img/placeholder.svg" alt="placeholder">
+            <img class="block w-auto" src="${url.resourcesPath}/img/resetPassword.svg" alt="User resetting password">
         </div>
 
     </#if>

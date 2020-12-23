@@ -32,7 +32,7 @@
 
             <div id="kc-form-buttons" class="py-6">
                 <span class="block w-full rounded-md shadow-sm">
-                    <button class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700" type="submit">
+                    <button class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700" type="submit">
                       ${msg("doSubmit")}
                     </button>
                 </span>
@@ -42,11 +42,11 @@
 
     <#elseif section = "card-right">
         <div class="hidden ml-4 xl:block">
-            <img class="block w-auto" src="${url.resourcesPath}/img/placeholder.svg" alt="placeholder">
+            <img class="block w-auto" src="${url.resourcesPath}/img/password.svg" alt="Did you forget your password?">
         </div>
 
     <#elseif section = "footer">
-        <div class="inline-flex items-center text-sm leading-5 text-indigo-600">
+        <div class="inline-flex items-center text-sm leading-5 text-secondary-500">
             <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
