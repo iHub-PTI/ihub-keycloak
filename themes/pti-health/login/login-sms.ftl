@@ -1,17 +1,7 @@
 <#import "template.ftl" as layout>
-<@layout.registrationLayout displayInfo=false; displayMessage=false;  displayWide=(realm.password && social.providers??); section>
-
-
-    <#if section = "header">
-        <div></div>
-
-    <#elseif section = "text">
-        <div class="hidden xl:block xl:w-500">
-            <h1 class="text-5xl font-bold text-cool-gray-700">¡Bienvenido!</h1>
-            <p class="text-2xl text-gray-500">Entra a Boldo - el ecosistema oficial de salud del Paraguay. Esta es tu puerta para transformar la atención médica.</p>
-        </div>
+<@layout.registrationLayout displayInfo=false displayMessage=false displayWide=(realm.password && social.providers??); section>
             
-    <#elseif section = "form">
+    <#if section = "form">
         <div id="kc-form">
             <div id="kc-form-wrapper">
                 <form id="kc-sms-code-login-form" class="space-y-6 text-cool-gray-700" id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
