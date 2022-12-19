@@ -19,6 +19,12 @@
             <#--  class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}"  -->
 
             <div>
+                <label for="phone" class="block text-sm font-medium leading-5 text-gray-700">${msg("phone")}</label>
+                <div class="mt-1 rounded-md shadow-sm">
+                    <input type="text" id="phone" class="block w-full form-input sm:text-sm sm:leading-5" name="phone" value="${(register.formData.phone!'')}" autocomplete="phone" />
+                </div>
+            </div>
+            <div>
                 <label for="email" class="block text-sm font-medium leading-5 text-gray-700">${msg("email")}</label>
                 <div class="mt-1 rounded-md shadow-sm">
                     <input type="text" id="email" class="block w-full form-input sm:text-sm sm:leading-5" name="email" value="${(register.formData.email!'')}" autocomplete="email" />
