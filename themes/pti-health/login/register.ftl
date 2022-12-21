@@ -64,6 +64,23 @@
             </div>
             </#if>
 
+            <#if client.clientId=='boldo-patient'>
+                <div>
+                    <label for="healthcare_organization" class="block text-sm font-medium leading-5 text-gray-700">${msg("healthAttentionOrganization")}</label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <select
+                                id="healthcare_organization"
+                                class="block w-full form-select sm:text-sm sm:leading-5"
+                                name="healthcare_organization"
+                                value="${(register.formData['healthcare_organization']!'')}">
+                            <option value="" <#if ((register.formData['healthcare_organization']!'') == "")> selected="selected"</#if>>--Selecciona uno--</option>
+                            <option value="32664" <#if ((register.formData['healthcare_organization']!'') == "32664")> selected="selected"</#if>>Centro Ambulatorio Básico - Fundación Tesãi</option>
+                            <option value="-1" <#if ((register.formData['healthcare_organization']!'') == "-1")> selected="selected"</#if>>No estoy seguro</option>
+                        </select>
+                    </div>
+                </div>
+            </#if>
+
             <span class="block text-sm leading-5 text-gray-500">
                 Al registrarse, aceptas nuestros <a class="text-secondary-500">términos de servicio</a> y <a class="text-secondary-500">política de privacidad</a>. 
             </span>
