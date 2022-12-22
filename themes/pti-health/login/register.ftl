@@ -18,10 +18,20 @@
 
             <#--  class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}"  -->
 
-            <div>
+            <div class="w-full ">
                 <label for="phone" class="block text-sm font-medium leading-5 text-gray-700">${msg("phone")}</label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <input type="text" id="phone" class="block w-full form-input sm:text-sm sm:leading-5" name="phone" value="${(register.formData.phone!'')}" autocomplete="phone" />
+                <div class="w-full flex">
+                    <select
+                            id="country_code"
+                            style="width: 30%; margin-right: 2px;"
+                            class="form-select mt-1"
+                            name="country_code"
+                            value="${(register.formData['country_code']!'')}">
+                        <option value="+595" <#if ((register.formData['country_code']!'') == "+595")> selected="selected"</#if>>🇵🇾+595</option>
+                        <option value="+55" <#if ((register.formData['country_code']!'') == "+55")> selected="selected"</#if>>🇧🇷+55</option>
+                    </select>
+                    <input type="text" id="phone" style="width: 70%;" class="form-input mt-1 w-10 sm:col-span-6" name="phone" value="${(register.formData.phone!'')}" autocomplete="phone"
+                    placeholder="981123123"/>
                 </div>
             </div>
             <div>
