@@ -3,3 +3,6 @@ themes/pti-health/login/resources/css/styles.output.css
 
 # ignore jar.deployed, jar.dodeploy, ...
 deployments/*.jar.*
+
+#mac ds store 
+.DS_Store 

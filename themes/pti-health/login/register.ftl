@@ -83,9 +83,9 @@
                                 class="block w-full form-select sm:text-sm sm:leading-5"
                                 name="healthcare_organization"
                                 value="${(register.formData['healthcare_organization']!'')}">
-                            <option value="" <#if ((register.formData['healthcare_organization']!'') == "")> selected="selected"</#if>>--Selecciona uno--</option>
-                            <option value="32664" <#if ((register.formData['healthcare_organization']!'') == "32664")> selected="selected"</#if>>Centro Ambulatorio Básico - Fundación Tesãi</option>
-                            <option value="-1" <#if ((register.formData['healthcare_organization']!'') == "-1")> selected="selected"</#if>>No estoy seguro</option>
+                            <#list healthcareOrganizations?sort_by("weightOrder") as org>
+                                <option value="${org.id}" <#if ((register.formData['healthcare_organization']!'') == "${org.id}")> selected="selected"</#if>>${org.name}</option>
+                            </#list>
                         </select>
                     </div>
                 </div>
