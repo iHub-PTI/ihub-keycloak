@@ -48,10 +48,13 @@
                         </div>
                         <div>
                             <input id="changeNumber" name="changeNumber" style="visibility: hidden" value="true">
-                            <label for="phone" class="block text-sm font-medium leading-5">${msg("phone")}</label>
-                                <div class="relative mt-1 rounded-md shadow-sm">
-                                <input tabindex="1" id="phone" type="text" class="block w-full form-input sm:text-sm sm:leading-5" value="${(phone)!}" name="phone"/>
-                            </div>
+                            <input id="resend" name="resend" style="visibility: hidden" value="true">
+                            <#if enableChangeNumber??>
+                                <label for="phone" class="block text-sm font-medium leading-5">${msg("phone")}</label>
+                                    <div class="relative mt-1 rounded-md shadow-sm">
+                                        <input tabindex="1" id="phone" type="text" class="block w-full form-input sm:text-sm sm:leading-5" value="${(phone)!}" name="phone"/>
+                                    </div>
+                            </#if>
                         </div>
                     
                         <div id="kc-form-buttons" class="py-6">
